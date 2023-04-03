@@ -16,7 +16,7 @@ logging.basicConfig(level=logging.INFO)
 
 async def get_user_data(user_id):
     try:
-        async with aiofiles.open(os.path.abspath(__file__)+f"user_data/{user_id}.json") as f:
+        async with aiofiles.open(os.path.abspath(__file__)+"user_data"+os.sep+f"/{user_id}.json") as f:
             return json.loads(await f.read())
     except Exception as e:
         print(str(e))
@@ -28,7 +28,7 @@ async def get_user_data(user_id):
 
 async def save_user_data(user_id, user_data):
     try:
-        async with aiofiles.open(os.path.abspath(__file__)+f"user_data/{user_id}.json", "w") as f:
+        async with aiofiles.open(os.path.abspath(__file__)+"user_data"+os.sep+f"/{user_id}.json", "w") as f:
             await f.write(json.dumps(user_data))
         return True
     except Exception as e:
